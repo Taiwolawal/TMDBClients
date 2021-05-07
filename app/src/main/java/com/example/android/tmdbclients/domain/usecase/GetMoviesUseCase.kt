@@ -1,0 +1,9 @@
+package com.example.android.tmdbclients.domain.usecase
+
+import com.example.android.tmdbclients.data.model.movie.Movie
+import com.example.android.tmdbclients.domain.repository.MovieRepository
+
+class GetMoviesUseCase (private  val movieRepository: MovieRepository){
+
+    suspend fun execute(): List<Movie>? = movieRepository.getUpdatedMovies()
+}
