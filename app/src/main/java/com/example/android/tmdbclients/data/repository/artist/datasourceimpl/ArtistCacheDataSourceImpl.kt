@@ -11,8 +11,8 @@ class ArtistCacheDataSourceImpl(): ArtistCacheDataSource {
         return  artistList
     }
 
-    override suspend fun saveArtistToCache(artist: List<Artist>) {
+    override suspend fun saveArtistToCache(artists: List<Artist>) {
         artistList.clear()
-        artistList =  ArrayList(artist)
+        artistList =  ArrayList(artists)
     }
 }

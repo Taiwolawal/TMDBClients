@@ -5,5 +5,5 @@ import com.example.android.tmdbclients.domain.repository.MovieRepository
 
 class GetMoviesUseCase (private  val movieRepository: MovieRepository){
 
-    suspend fun execute(): List<Movie>? = movieRepository.getUpdatedMovies()
+    suspend fun execute(): List<Movie>? = movieRepository.getMovies()
 }

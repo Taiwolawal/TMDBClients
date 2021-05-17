@@ -7,7 +7,7 @@ import com.example.android.tmdbclients.domain.usecase.GetUpdatedMoviesUseCase
 
 class MovieViewModel(
     private val getMoviesUseCase: GetMoviesUseCase,
-    private val updatedMoviesUseCase: GetUpdatedMoviesUseCase
+    private val getUpdatedMoviesUseCase: GetUpdatedMoviesUseCase
 ): ViewModel() {
 
     fun getMovies() = liveData {
@@ -16,7 +16,7 @@ class MovieViewModel(
     }
 
     fun updateMovies() = liveData {
-        val movieList = updatedMoviesUseCase.execute()
+        val movieList = getUpdatedMoviesUseCase.execute()
         emit(movieList)
     }
 }

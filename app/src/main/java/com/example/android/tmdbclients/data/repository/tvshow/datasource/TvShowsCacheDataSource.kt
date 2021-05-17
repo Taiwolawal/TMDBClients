@@ -6,5 +6,5 @@ interface TvShowsCacheDataSource {
 
     suspend fun  getTvShowsFromCache(): List<TvShow>
 
-    suspend fun  saveTvShowsToCache(tvShow: List<TvShow>)
+    suspend fun  saveTvShowsToCache(tvShows: List<TvShow>)
 }

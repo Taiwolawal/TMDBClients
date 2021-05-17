@@ -15,6 +15,7 @@ class App: Application(), Injector {
     override fun onCreate() {
         super.onCreate()
                appComponent = DaggerAppComponent.builder()
+                   //Added module with constructor parameter
            .appModule(AppModule(applicationContext))
            .netModule(NetModule(BuildConfig.BASE_URL))
            .remoteDataModule(RemoteDataModule(BuildConfig.API_KEY))

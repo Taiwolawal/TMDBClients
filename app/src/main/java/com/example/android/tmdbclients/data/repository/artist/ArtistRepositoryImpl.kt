@@ -37,7 +37,6 @@ class ArtistRepositoryImpl(
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
-
         return artistList
     }
 
@@ -51,7 +50,7 @@ class ArtistRepositoryImpl(
         if (artistList.size > 0) {
             return artistList
         } else {
-            artistList = getArtistsFromDB()
+            artistList = getArtistFromAPI()
             artistLocalDataSource.saveArtistsToDB(artistList)
         }
         return artistList

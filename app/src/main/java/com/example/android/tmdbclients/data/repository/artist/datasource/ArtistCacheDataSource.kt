@@ -6,5 +6,5 @@ interface ArtistCacheDataSource {
 
     suspend fun  getArtistFromCache(): List<Artist>
 
-    suspend fun  saveArtistToCache(artist: List<Artist>)
+    suspend fun  saveArtistToCache(artists: List<Artist>)
 }

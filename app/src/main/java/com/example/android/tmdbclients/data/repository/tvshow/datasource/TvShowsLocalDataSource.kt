@@ -6,7 +6,7 @@ interface TvShowsLocalDataSource {
 
     suspend fun getTvShowsFromDB(): List<TvShow>
 
-    suspend fun saveTvShowsToDB(tvShow: List<TvShow>)
+    suspend fun saveTvShowsToDB(tvShows: List<TvShow>)
 
     suspend fun clearAll()
 }

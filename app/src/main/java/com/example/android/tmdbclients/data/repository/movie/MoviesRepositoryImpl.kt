@@ -13,30 +13,29 @@ class MoviesRepositoryImpl (private val movieRemoteDataSource: MovieRemoteDataSo
                             private val movieCacheDataSource: MovieCacheDataSource
 ) : MovieRepository {
 
-    override suspend fun getMovies(): List<Movie>? {
-        return getMoviesFromCache()
-    }
+    override suspend fun getMovies(): List<Movie>? =  getMoviesFromCache()
+
 
     override suspend fun getUpdatedMovies(): List<Movie>? {
         val newMoviesList = getMoviesFromAPI()
         movieLocalDataSource.clearAll()
         movieLocalDataSource.saveMoviesToDB(newMoviesList)
-        movieCacheDataSource.saveMovieToCache(newMoviesList)
+        movieCacheDataSource.saveMoviesToCache(newMoviesList)
         return newMoviesList
     }
 
     suspend fun getMoviesFromAPI(): List<Movie> {
-        lateinit var moviesList: List<Movie>
+        lateinit var movieList: List<Movie>
         try {
             val response = movieRemoteDataSource.getMovies()
             val body = response.body()
-            if (body != null) {
-                moviesList = body.movies
+            if(body!=null){
+                movieList = body.movies
             }
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
-        return moviesList
+        return movieList
     }
 
     suspend fun getMoviesFromDB(): List<Movie> {
@@ -49,7 +48,7 @@ class MoviesRepositoryImpl (private val movieRemoteDataSource: MovieRemoteDataSo
         if (moviesList.size > 0) {
             return moviesList
         } else {
-            moviesList = getMoviesFromDB()
+            moviesList = getMoviesFromAPI()
             movieLocalDataSource.saveMoviesToDB(moviesList)
         }
         return moviesList
@@ -59,7 +58,7 @@ class MoviesRepositoryImpl (private val movieRemoteDataSource: MovieRemoteDataSo
     suspend fun getMoviesFromCache(): List<Movie> {
         lateinit var moviesList: List<Movie>
         try {
-            moviesList = movieCacheDataSource.getMovieFromCache()
+            moviesList = movieCacheDataSource.getMoviesFromCache()
         } catch (exception: Exception) {
             Log.i("MyTag", exception.message.toString())
         }
@@ -67,7 +66,7 @@ class MoviesRepositoryImpl (private val movieRemoteDataSource: MovieRemoteDataSo
             return moviesList
         } else {
             moviesList = getMoviesFromDB()
-            movieCacheDataSource.saveMovieToCache(moviesList)
+            movieCacheDataSource.saveMoviesToCache(moviesList)
         }
         return moviesList
     }

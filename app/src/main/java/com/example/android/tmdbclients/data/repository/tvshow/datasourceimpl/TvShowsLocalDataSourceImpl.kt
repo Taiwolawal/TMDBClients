@@ -14,9 +14,9 @@ class TvShowsLocalDataSourceImpl (private val tvShowDao: TvShowDao): TvShowsLoca
         return tvShowDao.getTvShow()
     }
 
-    override suspend fun saveTvShowsToDB(tvShow: List<TvShow>) {
+    override suspend fun saveTvShowsToDB(tvShows: List<TvShow>) {
         CoroutineScope(Dispatchers.IO).launch {
-            tvShowDao.saveTvShow(tvShow)
+            tvShowDao.saveTvShow(tvShows)
         }
     }
 

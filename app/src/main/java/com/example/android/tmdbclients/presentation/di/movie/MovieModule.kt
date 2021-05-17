@@ -13,8 +13,8 @@ class MovieModule {
     @Provides
     fun provideMovieViewModelFactory(
         getMoviesUseCase: GetMoviesUseCase,
-        updatedMoviesUseCase: GetUpdatedMoviesUseCase
+        getUpdatedMoviesUseCase: GetUpdatedMoviesUseCase
     ): MovieViewModelFactory {
-        return  MovieViewModelFactory(getMoviesUseCase, updatedMoviesUseCase)
+        return  MovieViewModelFactory(getMoviesUseCase, getUpdatedMoviesUseCase)
     }
 }

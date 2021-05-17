@@ -9,7 +9,6 @@ class MoviesRemoteDataSourceImpl (private val tmdbService: TMDBService, private 
     MovieRemoteDataSource {
 
 
-    override suspend fun getMovies(): Response<MovieList> {
-        return  tmdbService.getPopularMovies(apiKey)
-    }
+    override suspend fun getMovies(): Response<MovieList> =  tmdbService.getPopularMovies(apiKey)
+
 }

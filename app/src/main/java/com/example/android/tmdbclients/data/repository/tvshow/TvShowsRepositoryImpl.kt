@@ -50,7 +50,7 @@ class TvShowsRepositoryImpl (private val tvShowsRemoteDataSource: TvShowsRemoteD
         if (tvShowsList.size > 0) {
             return tvShowsList
         } else {
-            tvShowsList = getTvShowsFromDB()
+            tvShowsList = getTvShowsFromAPI()
             tvShowsLocalDataSource.saveTvShowsToDB(tvShowsList)
         }
         return tvShowsList

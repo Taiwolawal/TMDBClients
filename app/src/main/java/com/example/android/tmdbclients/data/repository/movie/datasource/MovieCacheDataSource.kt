@@ -4,7 +4,7 @@ import com.example.android.tmdbclients.data.model.movie.Movie
 
 interface MovieCacheDataSource {
 
-    suspend fun  getMovieFromCache(): List<Movie>
+    suspend fun  getMoviesFromCache(): List<Movie>
 
-    suspend fun  saveMovieToCache(artist: List<Movie>)
+    suspend fun  saveMoviesToCache(movies: List<Movie>)
 }

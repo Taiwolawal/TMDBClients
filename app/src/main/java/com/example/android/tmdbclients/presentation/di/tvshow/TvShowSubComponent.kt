@@ -4,7 +4,7 @@ import com.example.android.tmdbclients.presentation.di.artist.ArtistScope
 import com.example.android.tmdbclients.presentation.tvshow.TvShowActivity
 import dagger.Subcomponent
 
-@ArtistScope
+@TvShowScope
 @Subcomponent(modules = [TvShowModule::class])
 interface TvShowSubComponent {
 

@@ -7,9 +7,9 @@ import com.example.android.tmdbclients.domain.usecase.GetUpdatedMoviesUseCase
 
 class MovieViewModelFactory (
     private val getMoviesUseCase: GetMoviesUseCase,
-    private val updatedMoviesUseCase: GetUpdatedMoviesUseCase
+    private val getUpdatedMoviesUseCase: GetUpdatedMoviesUseCase
         ): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return  MovieViewModel(getMoviesUseCase, updatedMoviesUseCase) as T
+        return  MovieViewModel(getMoviesUseCase, getUpdatedMoviesUseCase) as T
     }
 }
